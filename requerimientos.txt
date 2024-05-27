@@ -1,0 +1,38 @@
+En este desafío deberás realizar una aplicación Node que se conecte con PostgreSQL, utilice transacciones y
+cursores para simular el comportamiento de una transacción bancaria.
+
+Para la solución de este desafío, necesitarás:
+● Crear una base de datos llamada banco.
+● Crear una tabla cuenta.
+● Crear una tabla transaccion.
+● Registrar por lo menos 1 cuenta en la tabla cuenta con un saldo inicial.
+
+Utiliza los argumentos de la línea de comando para definir los valores que usarán tus consultas SQL.
+
+Requerimientos:
+1. Crear una función asíncrona que registre una nueva transacción utilizando valores ingresados como argumentos
+en la línea de comando. Debe mostrar por consola la última transacción realizada.
+    Crear Nueva Cuenta - node index.js nuevo 2 20000
+    Deposito - node index.js deposito 1 4000 '01-01-2022'
+    Retiro - node index.js retiro 1 4000 '01-01-2022'
+    Transferencia - node index.js transferencia 8 20000 '01-01-2022' 9
+
+2. Realizar una función asíncrona que consulte la tabla de transacciones y retorne máximo 10 registros de una
+cuenta en específico. Debes usar cursores para esto.
+    Transacciones Generales - node index.js transacciones
+    Transacciones por ID - node index.js transaccion 1
+
+3. Realizar una función asíncrona que consulte el saldo de una cuenta y que sea ejecutada con valores ingresados
+como argumentos en la línea de comando. Debes usar cursores para esto.
+    Consulta por ID - node index.js consulta 1
+
+4. En caso de haber un error en la transacción, se debe retornar el error por consola.
+
+Primeros Pasos:
+1.- npm init -y
+    npm i pg pg-cursor dotenv
+
+2.- Se crean las tablas en la base de datos, siendo la primera la de cuenta, ya que la de transaccion tiene su 
+FOREING KEY en esta.
+
+3.- Se crean las Funciones y se capturan los comandos con el process.argv
